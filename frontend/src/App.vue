@@ -17,6 +17,8 @@ const dashboards = [
 const currentDash = ref<number | null>(null)
 const isDropdownOpen = ref(false)
 
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8501'
+
 const selectDash = (id: number) => {
   currentDash.value = id
   isDropdownOpen.value = false
@@ -104,7 +106,7 @@ const selectDash = (id: number) => {
             <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#cba6f7]"></div>
         </div>
         <iframe 
-          :src="`http://localhost:8501/?view=${currentDash}&embed=true&t=${Date.now()}`" 
+          :src="`${BASE_URL}/?view=${currentDash}&embed=true&t=${Date.now()}`" 
           class="w-full h-full border-none relative z-10 bg-transparent"
           title="COVID Dashboard"
         ></iframe>
